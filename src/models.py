@@ -8,8 +8,8 @@ class ContaBancaria:
     def depositar(self, valor: float):
         if valor <=0:
             raise ValueError("Valor do deposito deve ser positivo.")
-            self.saldo+= valor
-            self.historico.append(f"Deposito de +{valor}")
+        self.saldo+= valor
+        self.historico.append(f"Deposito de +{valor}")
 
     def sacar(self,valor: float):
         if valor > self.saldo:
