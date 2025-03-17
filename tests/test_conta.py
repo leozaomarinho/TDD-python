@@ -22,7 +22,7 @@ def test_historico_transacoes():
     conta.sacar(50)
 
     assert conta.historico == ["Deposito de 100","Saque de 50"]
-    assert.len(conta.historico) == 2
+    assert len(conta.historico) == 2
     assert conta.historico[0] == "Deposito de 100"
     assert conta.historico[1] == "Saque de 50"
     

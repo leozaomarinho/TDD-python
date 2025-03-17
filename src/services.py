@@ -1,4 +1,4 @@
-class BancoDeDados
+class BancoDeDados:
     def obter_saldo(self,titular):
         raise NotImplementedError("Deve ser implementado!")
 
