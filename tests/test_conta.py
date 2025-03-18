@@ -28,7 +28,16 @@ def test_deposito_valido(conta):
 
     assert conta.saldo == 200
 
-@patch("src.models.ContaBancaria.sacar")
+@patch("src.models.ContaBancaria.sacar") # Mockando o metodo sacar
 def test_mock_saque(mock_sacar, conta):
+    mock_sacar.return_value = None
     conta.sacar(50)
-    mock_sacar.assert_called_once_with(50)
+
+    mock_sacar.assert_called_once_with(50) #Verifica se o metodo foi chamado com o valor correto
+
+def test_mockar_deposito(mocker,conta):
+    mock_deposito = mocker.patch.object(conta,"depositar",return_value=None) #Mockando o metodo depositar
+    conta.depositar(100)
+
+    mock_deposito.assert_called_once_with(100) #Verifica se o metodo foi chamado com o valor correto
+
