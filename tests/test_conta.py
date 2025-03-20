@@ -9,13 +9,18 @@ def test_transferencia_valida():
 
     assert conta_origem.saldo == 50
     assert conta_destino.saldo == 150
+    assert conta_origem.historico == ["Transferencia de -50 para Maria"]
+    assert conta_destino.historico == ["Transferencia de +50 de João"]
 
 def test_tranferencia_saldo_insuficiente():
     conta_origem = ContaBancaria("João",100)
     conta_destino = ContaBancaria("Maria",100)
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError,match="Saldo insuficiente"):
         conta_origem.transferir(conta_destino,150)
+
+    assert conta_origem.saldo == 100
+    assert conta_destino.saldo == 100
 
 def test_historico_transacoes(conta):
     conta.depositar(100)
